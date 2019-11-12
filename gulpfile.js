@@ -10,23 +10,31 @@ var replace = require('gulp-replace');
 
 // File paths
 const files = { 
-  scssPath: 'src/scss/**/*.scss',
-  jsPath: 'src/js/**/*.js'
+  src: {
+    htmlPath: '*.html',
+    scssPath: 'src/scss/**/*.scss',
+    jsPath: 'src/js/**/*.js'
+  },
+  dist: {
+    htmlPath: 'dist/',
+    scssPath: 'dist/assets/css/',
+    jsPath: 'dist/assets/js/'
+  }
 }
 
 function scssTask() {
-  return src(files.scssPath)
+  return src(files.src.scssPath)
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(postcss([ autoprefixer(), cssnano() ]))
     .pipe(sourcemaps.write('.'))
-    .pipe(dest('dist')
+    .pipe(dest(files.dist.scssPath)
   );
 }
 
 function copyTask() {
-  return src('*.html')
-    .pipe(dest('dist/'));
+  return src(files.src.htmlPath)
+    .pipe(dest(files.dist.htmlPath));
 }
   
 exports.default = series(scssTask, copyTask);
