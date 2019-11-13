@@ -32,9 +32,38 @@ function scssTask() {
   );
 }
 
-function copyTask() {
+function jsTask(){
+  return src(files.src.jsPath)
+      .pipe(concat('scripts.js'))
+      .pipe(uglify())
+      .pipe(dest(files.dist.jsPath)
+  );
+}
+
+// Cachebust
+var cbString = new Date().getTime();
+function cacheBustTask(){
+    return src(['index.html'])
+        .pipe(replace(/cb=\d+/g, 'cb=' + cbString))
+        .pipe(dest('.'));
+}
+
+function copyHTMLTask() {
   return src(files.src.htmlPath)
     .pipe(dest(files.dist.htmlPath));
 }
+
+function watchTask(){
+  watch([files.src.scssPath, files.src.jsPath, files.src.htmlPath], 
+      series(
+          parallel(scssTask, jsTask, copyHTMLTask),
+          cacheBustTask
+      )
+  );    
+}
   
-exports.default = series(scssTask, copyTask);
+exports.default = series(
+  parallel(scssTask, jsTask, copyHTMLTask), 
+  cacheBustTask,
+  watchTask
+);
