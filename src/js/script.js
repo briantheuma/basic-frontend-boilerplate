@@ -1,2 +1,1 @@
-// As with all css properties that contain hyphens, their corresponding names in JS is to remove the hyphen and make the following letter capital: backgroundColor
-// alert(myDiv.style.backgroundColor);
+console.log('Hello world');
