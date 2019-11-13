@@ -1,0 +1,13 @@
+$white: #fff;
+$black: #000;
+
+@function cLight($color, $percentage) {
+    @return mix($white, $color, $percentage);
+}
+
+@function cDark($color, $percentage) {
+  @return mix($white, $color, $percentage);
+}
+
+$dark: #373737;
+$light: #f7f7f7;

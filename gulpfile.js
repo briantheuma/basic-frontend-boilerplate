@@ -11,7 +11,7 @@ var replace = require('gulp-replace');
 // File paths
 const files = { 
   src: {
-    htmlPath: '*.html',
+    htmlPath: 'src/*.html',
     scssPath: 'src/scss/**/*.scss',
     jsPath: 'src/js/**/*.js'
   },
@@ -43,9 +43,9 @@ function jsTask(){
 // Cachebust
 var cbString = new Date().getTime();
 function cacheBustTask(){
-    return src(['index.html'])
+    return src(files.src.htmlPath)
         .pipe(replace(/cb=\d+/g, 'cb=' + cbString))
-        .pipe(dest('.'));
+        .pipe(dest(files.dist.htmlPath));
 }
 
 function copyHTMLTask() {
