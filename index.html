@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <!-- General meta tags needed-->
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- Needed for responsive design -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- If you want custom browser colors on mobile -->
+        <meta name="theme-color" content="#1843c1" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#1843c1">
+
+        <title>-|-</title>
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="favicon-192x192.png" sizes="192x192">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+
+        <!-- CSS File -->
+        <link rel="stylesheet" href="dist/style.css?cb=1573626757859">
+    </head>
+    <body>
+
+        <main>
+            <section class="content">
+                <!-- <h2>Find section sizes for 8 grid</h2> -->
+                <h2>-- -- --</h2>
+
+                <p>
+                    <div class="input-container">
+                        <span>Boxes across the screen?</span>
+                        <input type="number" class="sections-amount" id="s-amount" value="4" />
+                    </div>
+                    <div class="input-container">
+                        <span>Boxes width in pixels?</span>
+                        <input type="number" class="sections-size" id="s-size" />
+                    </div>
+                    <div class="bordered-container">
+                        <div class="radio-container">
+                            <label class="btn-radio">
+                                Use window width as canvas
+                                <input type="radio" class="btn-canvas-this" name="canvas_width" value="canvas-this" checked="checked">
+                                <span class="radio"></span>
+                            </label>
+                            <label class="btn-radio">
+                                Use custom width as canvas
+                                <input type="radio" class="btn-canvas-custom" name="canvas_width" value="canvas-custom">
+                                <span class="radio"></span>
+                            </label>
+                        </div>
+                        <div class="input-container canvas_width-input">
+                            <span>Canvas width?</span>
+                            <input type="number" class="sections-padding" id="s-canvas" value="" />
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <span>How much padding between each item?</span>
+                        <input type="number" class="sections-padding" id="s-padding" value="16" />
+                    </div>
+                    
+                    <div class="radio-container">
+                        <label class="btn-radio">
+                            Do not indent
+                            <input type="radio" name="inpadding" value="inpadding-no" checked="checked">
+                            <span class="radio"></span>
+                        </label>
+                        <label class="btn-radio">
+                            Yes indent
+                            <input type="radio" name="inpadding" value="inpadding-yes">
+                            <span class="radio"></span>
+                        </label>
+                    </div>
+
+                    <br />
+                    <div id="btn-calculate" class="btn-calculate">
+                      Calculate
+                    </div>
+                </p>
+
+                <div id="content-results" class="content-results">
+                </div>
+                <div class="section-details">
+                    <div class="sd-canvas-width"></div>
+                </div>
+            </section>
+        </main>
+        <div class="section-boxes"></div>
+
+        <!-- JavaScript File -->
+        <script src="dist/all.js?cb=1573626757859"></script>
+    </body>
+</html>

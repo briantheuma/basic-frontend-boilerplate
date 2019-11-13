@@ -1,4 +1,4 @@
-const { src, dest, watch, series } = require('gulp');
+const { src, dest, watch, series, parallel } = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
