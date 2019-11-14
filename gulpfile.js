@@ -12,11 +12,13 @@ var replace = require('gulp-replace');
 const files = { 
   src: {
     htmlPath: 'src/*.html',
+    imgsPath: 'src/images/*.*',
     scssPath: 'src/scss/**/*.scss',
     jsPath: 'src/js/**/*.js'
   },
   dist: {
     htmlPath: 'dist/',
+    imgsPath: 'dist/assets/images/',
     scssPath: 'dist/assets/css/',
     jsPath: 'dist/assets/js/'
   }
@@ -53,6 +55,11 @@ function copyHTMLTask() {
     .pipe(dest(files.dist.htmlPath));
 }
 
+function copyImgsTask() {
+  return src(files.src.imgsPath)
+    .pipe(dest(files.dist.imgsPath));
+}
+
 function watchTask(){
   watch([files.src.scssPath, files.src.jsPath, files.src.htmlPath], 
       series(
@@ -63,7 +70,7 @@ function watchTask(){
 }
   
 exports.default = series(
-  parallel(scssTask, jsTask, copyHTMLTask), 
+  parallel(scssTask, jsTask, copyHTMLTask, copyImgsTask), 
   cacheBustTask,
   watchTask
 );
